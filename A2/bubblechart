@@ -5,5 +5,27 @@
   "title": "Number of Schools, Staff and Students in Australia",
   "data": {
     "url": "https://raw.githubusercontent.com/b-onbon/FIT3179/main/Number_of_Schools.csv"
+  },
+  "mark": "circle",
+  "encoding": {
+    "x": {
+      "field": "Schools",
+      "type": "quantitative",
+      "title": "Number of Schools"
+    },
+    "y": {
+      "field": "Staff",
+      "type": "quantitative",
+      "title": "Number of Staff"
+    },
+    "color": {
+      "field": "State",
+      "type": "nominal"
+    },
+    "size": {
+      "field": "Students",
+      "type": "quantitative"
+    }
   }
 }
+
