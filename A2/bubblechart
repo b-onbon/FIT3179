@@ -1,6 +1,9 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "data": {"url": "https://raw.githubusercontent.com/"},
-  "layer": [
-  ]
+  "width": 500, 
+  "height": 400,
+  "title": "Number of Schools, Staff and Students in Australia",
+  "data": {
+    "url": "https://raw.githubusercontent.com/b-onbon/FIT3179/main/Number_of_Schools.csv"
+  }
 }
