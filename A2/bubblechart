@@ -6,30 +6,22 @@
   "data": {
     "url": "https://raw.githubusercontent.com/b-onbon/FIT3179/main/A2/Data/Number_of_Schools.csv"
   },
-  "params": [
-    {
-    "name": "year_selection",
-    "bind": {
-      "input": "select",
-      "options": [
-        null,
-        "2021",
-        "2022"
-      ],
-      "labels": [
-        "Show All",
-        "2021",
-        "2022"
-      ],
-      "name": "Year Selection: " 
-    }
-  }
-  ],
   "selection":{ 
     "state_highlight": { 
       "type" : "multi", 
       "fields": ["State"], 
       "bind": "legend" 
+    } 
+  },
+  "selection":{ 
+    "Select": { 
+      "type" : "multi", 
+      "fields": ["Year"], 
+      "name": "Select Year",
+      "bind": {
+        "input": "select",
+        "options": ["2021", "2022"]
+      }
     } 
   },
   "mark": "circle",
@@ -54,6 +46,10 @@
       "condition": {"selection": "state_highlight", "value": 0.6}, 
       "value" : 0.2 
     },
+    "opacity": { 
+      "condition": {"selection": "Select", "value": 0.6}, 
+      "value" : 0.2 
+    },
     "size": {
       "field": "Students",
       "type": "quantitative",  
@@ -73,4 +69,3 @@
     ]
   }
 }
-
