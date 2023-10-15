@@ -1,31 +1,76 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 500, 
-  "height": 400,
+  "width": 400, 
+  "height": 300,
   "title": "Number of Schools, Staff and Students in Australia",
   "data": {
-    "url": "https://raw.githubusercontent.com/b-onbon/FIT3179/main/Number_of_Schools.csv"
+    "url": "https://raw.githubusercontent.com/b-onbon/FIT3179/main/A2/Data/Number_of_Schools.csv"
+  },
+  "params": [
+    {
+    "name": "year_selection",
+    "bind": {
+      "input": "select",
+      "options": [
+        null,
+        "2021",
+        "2022"
+      ],
+      "labels": [
+        "Show All",
+        "2021",
+        "2022"
+      ],
+      "name": "Year Selection: " 
+    }
+  }
+  ],
+  "selection":{ 
+    "state_highlight": { 
+      "type" : "multi", 
+      "fields": ["State"], 
+      "bind": "legend" 
+    } 
   },
   "mark": "circle",
   "encoding": {
     "x": {
       "field": "Schools",
       "type": "quantitative",
-      "title": "Number of Schools"
+      "title": "Number of Schools",
+      "axis" : { "tickCount" : 7 }
     },
     "y": {
       "field": "Staff",
       "type": "quantitative",
-      "title": "Number of Staff"
+      "title": "Number of Staff",
+      "axis" : { "tickCount" : 7 }
     },
     "color": {
       "field": "State",
       "type": "nominal"
     },
+    "opacity": { 
+      "condition": {"selection": "state_highlight", "value": 0.6}, 
+      "value" : 0.2 
+    },
     "size": {
       "field": "Students",
-      "type": "quantitative"
-    }
+      "type": "quantitative",  
+      "scale": { 
+        "type" : "threshold" , 
+        "domain" : [50000 , 75000 , 1000000], 
+        "range" : [100 , 150 , 250, 350] 
+      }, 
+      "legend": {"format" : ".1s"}
+    },
+    "tooltip": [ 
+      {"field": "State", "type" : "nominal" }, 
+      {"field": "Year", "type": "ordinal", "format" : "d"},
+      {"field": "Staff", "type": "quantitative", "format": ","},
+      {"field": "Schools", "type": "quantitative", "format": ","},  
+      {"field": "Students", "type": "quantitative", "format" : ","}
+    ]
   }
 }
 
