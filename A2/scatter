@@ -1,0 +1,58 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 400, 
+  "height": 300,
+  "title": "Secondary Retention Rate",
+  "data": {
+    "url": "https://raw.githubusercontent.com/b-onbon/FIT3179/main/A2/Data/Retention_Rate.csv"
+  },
+  "params": [
+    {
+        "name": "select_year",
+        "bind": {
+            "input": "select",
+            "options": ["2021", "2022"],
+            "labels": ["2021", "2022"],
+        "name": "Select Year"
+        }
+    } 
+],
+"transform": [
+    
+    {"filter": "select_year == null || datum.Year == select_year" },
+    {
+      "calculate": "datum.Staff/1000",
+      "as": "Staff simple" 
+  }
+],
+  "selection":{ 
+    "state_highlight": { 
+      "type" : "multi", 
+      "fields": ["State"], 
+      "bind": "legend" 
+    } 
+  },
+  "mark": "point",
+  "encoding": {
+    "x": {
+      "field": "datum.Gender == Male",
+      "type": "quantitative",
+      "title": "Males %",
+      "scale": {"domain": [50, 100]}
+    },
+    "y": {
+      "field": "datum.Gender == Female",
+      "type": "quantitative",
+      "title": "Females %",
+      "scale": {"domain": [50, 100]}
+    },
+    "color": {
+      "field": "State",
+      "type": "nominal"
+    },
+    "opacity": { 
+      "condition": {"selection": "state_highlight", "value": 0.6}, 
+      "value" : 0.2 
+    }
+  }
+}
