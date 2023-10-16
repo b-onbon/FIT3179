@@ -1,0 +1,9 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 400, 
+  "height": 300,
+  "title": "Secondary Graduation Rate by State",
+  "data": {
+    "url": "https://raw.githubusercontent.com/b-onbon/FIT3179/main/A2/Data/Graduation_Rate.csv"
+  }
+}
