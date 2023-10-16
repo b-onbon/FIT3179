@@ -35,7 +35,7 @@
   "mark": "point",
   "encoding": {
     "x": {
-      "field": "datum.Gender == Male",
+      "field": "Retention",
       "type": "quantitative",
       "title": "Males %",
       "scale": {"domain": [50, 100]}
