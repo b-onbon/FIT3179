@@ -1,33 +1,46 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 400, 
-  "height": 300,
+
   "title": "Gender Distribution of Students",
   "data": {
     "url": "https://raw.githubusercontent.com/b-onbon/FIT3179/main/A2/Data/Number_of_Students.csv"
 },
-"selection":{ 
-    "Select": { 
-      "type" : "multi", 
-      "fields": ["Year"], 
-      "name": "Select Year",
-      "bind": {
-        "input": "select",
-        "options": ["2021", "2022"]
-      }
-    } 
-  },
+"params": [
+    {
+        "name": "select_year",
+        "bind": {
+            "input": "select",
+            "options": ["2021", "2022"],
+            "labels": ["2021", "2022"],
+        "name": "Select Year"
+        }
+    }
+],
+"transform": [
+    
+    {"filter": "select_year == null || datum.Year == select_year" },
+    {
+        "calculate": "datum.Students/1000",
+        "as": "Students simple" 
+    }
+],
   "mark": "bar",
   "encoding": {
     "x": {"field": "State",
       "type": "nominal",
+      "sort": "-y",
       "title": "State"
     },
-    "y": {"field": "Students",
+    "y": {"field": "Students simple",
     "type": "quantitative",
-    "title": "Number of Students"
+    "stack": null,
+    "title": "Number of Students ('000)"
     },
     "xOffset": {"field": "Gender"},
-    "color": {"field": "Gender"}
+    "color": {
+        "field": "Gender",
+        "type": "nominal",
+        "scale": {"range": ["#9370db", "#87a96b"]}
     }
+  }
 }

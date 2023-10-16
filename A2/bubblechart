@@ -6,22 +6,30 @@
   "data": {
     "url": "https://raw.githubusercontent.com/b-onbon/FIT3179/main/A2/Data/Number_of_Schools.csv"
   },
+  "params": [
+    {
+        "name": "select_year",
+        "bind": {
+            "input": "select",
+            "options": ["2021", "2022"],
+            "labels": ["2021", "2022"],
+        "name": "Select Year"
+        }
+    } 
+],
+"transform": [
+    
+    {"filter": "select_year == null || datum.Year == select_year" },
+    {
+      "calculate": "datum.Staff/1000",
+      "as": "Staff simple" 
+  }
+],
   "selection":{ 
     "state_highlight": { 
       "type" : "multi", 
       "fields": ["State"], 
       "bind": "legend" 
-    } 
-  },
-  "selection":{ 
-    "Select": { 
-      "type" : "multi", 
-      "fields": ["Year"], 
-      "name": "Select Year",
-      "bind": {
-        "input": "select",
-        "options": ["2021", "2022"]
-      }
     } 
   },
   "mark": "circle",
@@ -30,13 +38,12 @@
       "field": "Schools",
       "type": "quantitative",
       "title": "Number of Schools",
-      "axis" : { "tickCount" : 7 }
     },
     "y": {
-      "field": "Staff",
+      "field": "Staff simple",
       "type": "quantitative",
-      "title": "Number of Staff",
-      "axis" : { "tickCount" : 7 }
+      "title": "Number of Staff ('000)",
+      "scale": {"domain": [0, 140]}
     },
     "color": {
       "field": "State",
@@ -46,17 +53,13 @@
       "condition": {"selection": "state_highlight", "value": 0.6}, 
       "value" : 0.2 
     },
-    "opacity": { 
-      "condition": {"selection": "Select", "value": 0.6}, 
-      "value" : 0.2 
-    },
     "size": {
       "field": "Students",
       "type": "quantitative",  
       "scale": { 
         "type" : "threshold" , 
         "domain" : [50000 , 75000 , 1000000], 
-        "range" : [100 , 150 , 250, 350] 
+        "range" : [100 , 150 , 250, 300] 
       }, 
       "legend": {"format" : ".1s"}
     },
