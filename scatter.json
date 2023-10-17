@@ -1,7 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 400, 
-  "height": 300,
+  "width": "container",
   "title": "Secondary Retention Rate",
   "data": {
     "url": "https://raw.githubusercontent.com/b-onbon/FIT3179/main/Data/Retention_Rate.csv"
