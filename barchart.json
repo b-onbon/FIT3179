@@ -3,7 +3,7 @@
 
   "title": "Gender Distribution of Students",
   "data": {
-    "url": "https://raw.githubusercontent.com/b-onbon/FIT3179/main/A2/Data/Number_of_Students.csv"
+    "url": "https://raw.githubusercontent.com/b-onbon/FIT3179/main/Data/Number_of_Students.csv"
 },
 "params": [
     {
