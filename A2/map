@@ -3,18 +3,19 @@
   "width": 800, 
   "height": 400,
   "title": "Secondary Graduation Rate by State",
+  "projection": {"type": "equalEarth"},
   "data": {
     "url": "https://raw.githubusercontent.com/b-onbon/FIT3179/main/A2/Data/AustraliaMap",
     "format": {"type": "topojson", "feature": "AustraliaMap"}
   },
   "transform": [
-    {"lookup": "properties.STATE_NAME",
+    {"lookup": "properties.STE_NAME21",
     "from": {
       "data": {
         "url": "https://raw.githubusercontent.com/b-onbon/FIT3179/main/A2/Data/Graduation_Rate.csv"
       },
       "key": "State",
-      "fields": ["Active"]
+      "fields": ["ProportionGrad"]
     }
   }
   ],
@@ -22,7 +23,9 @@
   "encoding": {
     "color": {
     "field": "ProportionGrad",
-    "type": "quantitative"
+    "type": "quantitative",
+    "scale": {"domain": [0, 100]},
+    "title": "Proportion of State %"
   }
 }
 }

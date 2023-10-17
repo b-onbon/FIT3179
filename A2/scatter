@@ -18,20 +18,45 @@
     } 
 ],
 "transform": [
-    
-    {"filter": "select_year == null || datum.Year == select_year" },
     {
-      "calculate": "datum.Staff/1000",
-      "as": "Staff simple" 
-  }
-],
-  "selection":{ 
-    "state_highlight": { 
-      "type" : "multi", 
-      "fields": ["State"], 
-      "bind": "legend" 
-    } 
+      "filter": {"field": "Gender", "equal": "Male"}
+    },
+    {
+      "calculate": "datum.Percentage",
+      "as": "diagonal" 
   },
+  {
+    "filter": {"field": "Gender", "equal": "Female"}
+  },
+  {
+    "calculate": "datum.Percentage",
+    "as": "end" 
+}
+],
+"layer": [
+    {
+      "mark": {"type": "point", "filled": true},
+      "transform": [
+        {"filter": {"field": "Gender", "equal": "Male"}}
+      ]
+    },
+    {
+        "mark": {"type": "point", "filled": true},
+        "transform": [
+          {"filter": {"field": "Gender", "equal": "Female"}}
+        ]
+      },
+      {
+        "mark": {"type": "rule", "color": "black"},
+        "transform": [
+          {"filter": {"field": "Gender", "equal": "Male"}}
+        ],
+        "encoding": {
+          "x": {"field": "diagonal", "type": "quantitative"},
+          "y": {"field": "end", "type": "quantitative"}
+        }
+      }
+    ],
   "mark": "point",
   "encoding": {
     "x": {
@@ -41,18 +66,15 @@
       "scale": {"domain": [50, 100]}
     },
     "y": {
-      "field": "datum.Gender == Female",
+      "field": "Retention",
       "type": "quantitative",
       "title": "Females %",
       "scale": {"domain": [50, 100]}
     },
     "color": {
-      "field": "State",
-      "type": "nominal"
-    },
-    "opacity": { 
-      "condition": {"selection": "state_highlight", "value": 0.6}, 
-      "value" : 0.2 
+      "field": "Gender",
+      "type": "nominal",
+      "scale": {"range": ["#9370db", "#87a96b"]}
+    }
     }
   }
-}
