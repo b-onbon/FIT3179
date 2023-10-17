@@ -1,12 +1,10 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 800, 
-  "height": 400,
   "title": "Secondary Graduation Rate by State",
   "projection": {"type": "equalEarth"},
   "data": {
     "url": "https://raw.githubusercontent.com/b-onbon/FIT3179/main/A2/Data/AustraliaMap.json",
-    "format": {"type": "topojson", "feature": "AustraliaMap"}
+    "format": {"type": "topojson", "feature": "STE_2021_AUST_GDA94"}
   },
   "transform": [
     {"lookup": "properties.STE_NAME21",
