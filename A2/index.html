@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Education in Australia</title>
+  <!-- Import Vega Lite -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+  <!-- Import pure.css -->
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+    integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+  <!-- CSS file -->
+  <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
+
+
+</head>
+
+<body>
+
+  <div class="page">
+
+    <!-- Title -->
+    <div class="pure-g">
+      <div class="pure-u-1-1">
+        <h1>Education in Australia</h1>
+        <p>Is Victoria truly the Education State?</p>
+      </div>
+    </div>
+
+    <!-- bubblechart-->
+    <div class="pure-g">
+      <div class="pure-u-1-2">
+        <div class="description description-left">
+          <h2>The Education System</h2>
+          <p>A clear relation between the number of schools and staff exists and New South Wales appears to be the leading state. </p>
+        </div>
+      </div>
+      <div class="pure-u-1-2">
+        <div id="vis1" class="vis-container"></div>
+      </div>
+    </div>
+
+    <!-- barchart + scatter -->
+    <div class="pure-g">
+      <div class="pure-u-1-3">
+        <div class="description description-left">
+          <h2>The Students</h2>
+          <p>The ratio of male to female students is discovered to be almost the same for every state. Females are typically more likely to complete secondary school and go on to finishing year 12.</p>
+        </div>
+      </div>
+      <div class="pure-u-1-3">
+        <div id="vis4" class="vis-container"></div>
+      </div>
+      <div class="pure-u-1-3" style="width: 31.5%;">
+        <div id="vis3" class="vis-container" style="margin-left: 15px;"></div>
+      </div>
+
+    </div>
+
+    <!-- map -->
+    <div class="pure-g">
+      <div class="pure-u-2-3">
+        <div id="vis2" class="vis-container"></div>
+      </div>
+      <div class="pure-u-1-3">
+        <div class="description description-right">
+          <h2>Completion of Year 12</h2>
+          <p>Proportion of secondary students completing Year 12 over the years has increased for every state.</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div> <!-- visualisations-->
+
+  <script type="text/javascript">
+    var specVis1 = "./bubblechart.json";
+    var specVis2 = "./barchart.json";
+    var specVis3 = "./scatter.json";
+    var specVis4 = "./map.json";
+
+    vegaEmbed('#vis1', specVis1, { "actions": false });
+
+    vegaEmbed('#vis2', specVis2, { "actions": false }).then(function (result) {
+    }).catch(console.error);
+
+    vegaEmbed('#vis3', specVis3, { "actions": false }).then(function (result) {
+    }).catch(console.error);
+
+    vegaEmbed('#vis4', specVis4, { "actions": false }).then(function (result) {
+    }).catch(console.error);
+  </script>
+</body>
+
+</html>
