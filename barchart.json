@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": "Gender Distribution of Students",
-  "width": "50",
-  "height": "50",
+  "width": "150",
+  "height": "100",
   "data": {
     "url": "https://raw.githubusercontent.com/b-onbon/FIT3179/main/Data/Number_of_Students.csv"
 },
