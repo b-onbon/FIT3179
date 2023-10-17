@@ -5,7 +5,7 @@
   "title": "Secondary Graduation Rate by State",
   "projection": {"type": "equalEarth"},
   "data": {
-    "url": "https://raw.githubusercontent.com/b-onbon/FIT3179/main/A2/Data/AustraliaMap",
+    "url": "https://raw.githubusercontent.com/b-onbon/FIT3179/main/A2/Data/AustraliaMap.json",
     "format": {"type": "topojson", "feature": "AustraliaMap"}
   },
   "transform": [
