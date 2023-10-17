@@ -4,7 +4,7 @@
   "height": 300,
   "title": "Secondary Retention Rate",
   "data": {
-    "url": "https://raw.githubusercontent.com/b-onbon/FIT3179/main/A2/Data/Retention_Rate.csv"
+    "url": "https://raw.githubusercontent.com/b-onbon/FIT3179/main/Data/Retention_Rate.csv"
   },
   "params": [
     {
