@@ -19,44 +19,15 @@
 ],
 "transform": [
     {
-      "filter": {"field": "Gender", "equal": "Male"}
+      "filter": {"field": "Gender", "equal": "Male"},
+      "as": "Male"
     },
-    {
-      "calculate": "datum.Percentage",
-      "as": "diagonal" 
-  },
   {
-    "filter": {"field": "Gender", "equal": "Female"}
-  },
-  {
-    "calculate": "datum.Percentage",
-    "as": "end" 
-}
+    "filter": {"field": "Gender", "equal": "Female"},
+    "as": "Male"
+  }
 ],
-"layer": [
-    {
-      "mark": {"type": "point", "filled": true},
-      "transform": [
-        {"filter": {"field": "Gender", "equal": "Male"}}
-      ]
-    },
-    {
-        "mark": {"type": "point", "filled": true},
-        "transform": [
-          {"filter": {"field": "Gender", "equal": "Female"}}
-        ]
-      },
-      {
-        "mark": {"type": "rule", "color": "black"},
-        "transform": [
-          {"filter": {"field": "Gender", "equal": "Male"}}
-        ],
-        "encoding": {
-          "x": {"field": "diagonal", "type": "quantitative"},
-          "y": {"field": "end", "type": "quantitative"}
-        }
-      }
-    ],
+
   "mark": "point",
   "encoding": {
     "x": {
