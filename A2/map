@@ -1,9 +1,28 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 400, 
-  "height": 300,
+  "width": 800, 
+  "height": 400,
   "title": "Secondary Graduation Rate by State",
   "data": {
-    "url": "https://raw.githubusercontent.com/b-onbon/FIT3179/main/A2/Data/Graduation_Rate.csv"
+    "url": "https://raw.githubusercontent.com/b-onbon/FIT3179/main/A2/Data/AustraliaMap",
+    "format": {"type": "topojson", "feature": "AustraliaMap"}
+  },
+  "transform": [
+    {"lookup": "properties.STATE_NAME",
+    "from": {
+      "data": {
+        "url": "https://raw.githubusercontent.com/b-onbon/FIT3179/main/A2/Data/Graduation_Rate.csv"
+      },
+      "key": "State",
+      "fields": ["Active"]
+    }
   }
+  ],
+  "mark": {"type": "geoshape"},
+  "encoding": {
+    "color": {
+    "field": "ProportionGrad",
+    "type": "quantitative"
+  }
+}
 }
